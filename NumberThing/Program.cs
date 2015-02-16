@@ -8,7 +8,8 @@ using System.IO;
 namespace NumberThing
 {
     class NTConstants {
-        public static int Dim = 9; 
+        public static int BoxSize = 3;
+        public static int FieldSize = 9; 
     }
     class Row 
     {
@@ -16,7 +17,7 @@ namespace NumberThing
         public Row(string raw)
         {
             cells = raw.Split(',').Select(n => (!String.IsNullOrEmpty(n) ? int.Parse(n) : 0)).ToList();
-            while( cells.Count < NTConstants.Dim) 
+            while( cells.Count < NTConstants.FieldSize) 
                 cells.Add(0);
         }
     }
@@ -33,12 +34,10 @@ namespace NumberThing
             raw.Split(',').Select(n => 
                 int.Parse(n)).ToArray();
 
-
-            string line;
-
             // Read the file and display it line by line.
             System.IO.StreamReader file = new System.IO.StreamReader(@"c:\utils\testdata\test.txt");
 
+            //string line;
             //while ((line = file.ReadLine()) != null)
             //{
             //    Row thisRow = new Row(line);
@@ -47,6 +46,17 @@ namespace NumberThing
             Field field = new Field(file);
             
             file.Close();
+
+            // print
+            Array.ForEach(field.field, row =>
+            {
+                Array.ForEach(row, cell =>
+                {
+                    Console.Write("{0}", cell.ToString());
+
+                });
+                Console.WriteLine("");
+            });
         }
     }
 }
