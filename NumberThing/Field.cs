@@ -9,6 +9,8 @@ namespace NumberThing
 {
     class Cell
     {
+        private bool[] candidates;
+
         private int _value;
 
         public int value
@@ -16,11 +18,17 @@ namespace NumberThing
             get { return _value; }
             set { _value = value; }
         }
+
+        public bool IsSet { get { return (_value != 0);  } }
+
         public Cell(string val)
         {
-            _value = (!String.IsNullOrEmpty(val) ? int.Parse(val) : 0;
+            candidates = new bool[NTConstants.Dim];
+            _value = !String.IsNullOrEmpty(val) ? int.Parse(val) : 0;
+            Array.ForEach(candidates, n => { n = IsSet; });
         }
     }
+
     class Field
     {
         public int[][] field;
