@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace NumberThing
 {
@@ -25,21 +26,26 @@ namespace NumberThing
         static void Main(string[] args)
         {
             string raw = "1,2";
-            List<int> cells = raw.Split(',').Select(n => int.Parse(n)).ToList();
+            List<int> cells = raw.Split(',').Select(n => 
+                int.Parse(n)).ToList();
 
+
+            raw.Split(',').Select(n => 
+                int.Parse(n)).ToArray();
 
 
             string line;
 
             // Read the file and display it line by line.
-            System.IO.StreamReader file =
-               new System.IO.StreamReader(@"c:\testdata\test.txt");
-            while ((line = file.ReadLine()) != null)
-            {
-                Row thisRow = new Row(line);
-                
-            }
+            System.IO.StreamReader file = new System.IO.StreamReader(@"c:\utils\testdata\test.txt");
 
+            //while ((line = file.ReadLine()) != null)
+            //{
+            //    Row thisRow = new Row(line);
+
+            //}
+            Field field = new Field(file);
+            
             file.Close();
         }
     }
