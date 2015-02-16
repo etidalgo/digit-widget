@@ -7,9 +7,24 @@ using System.IO;
 
 namespace NumberThing
 {
+    class Cell
+    {
+        private int _value;
+
+        public int value
+        {
+            get { return _value; }
+            set { _value = value; }
+        }
+        public Cell(string val)
+        {
+            _value = (!String.IsNullOrEmpty(val) ? int.Parse(val) : 0;
+        }
+    }
     class Field
     {
         public int[][] field;
+
         public Field(StreamReader file)
         {
             field = new int[NTConstants.Dim][];

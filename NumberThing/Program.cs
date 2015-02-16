@@ -25,7 +25,7 @@ namespace NumberThing
     {
         static void Main(string[] args)
         {
-            string raw = "1,2";
+            string raw = "8,3";
             List<int> cells = raw.Split(',').Select(n => 
                 int.Parse(n)).ToList();
 
