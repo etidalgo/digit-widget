@@ -12,6 +12,10 @@ namespace NumberThing
         public static int FieldSize = 9; 
     }
 
+    class UselessClass
+    {
+        // put in to force commit to new branch
+    }
     class Row 
     {
         public List<int> cells = new List<int>();
