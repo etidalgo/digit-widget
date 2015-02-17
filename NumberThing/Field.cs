@@ -7,6 +7,7 @@ using System.IO;
 
 namespace NumberThing
 {
+
     class Cell
     {
         private bool[] candidates;
@@ -19,7 +20,7 @@ namespace NumberThing
             set { _value = value; }
         }
 
-        public string ToString()
+        override public string ToString()
         {
             return IsSet ? _value.ToString() : " ";
         }
@@ -31,6 +32,17 @@ namespace NumberThing
             candidates = new bool[NTConstants.FieldSize];
             _value = !String.IsNullOrEmpty(val) ? int.Parse(val) : 0;
             Array.ForEach(candidates, n => { n = IsSet; });
+        }
+    }
+
+    class Grouping
+    {
+        public enum GroupType { Row = 0, Cell, Box };
+        public Cell[] Cells;
+
+        public Grouping(Field field, Grouping.GroupType groupType, int typeIdx)
+        {
+             Cells = new Cell[NTConstants.FieldSize];
         }
     }
 
