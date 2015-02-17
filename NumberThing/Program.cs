@@ -27,12 +27,6 @@ namespace NumberThing
             // Read the file and display it line by line.
             System.IO.StreamReader file = new System.IO.StreamReader(@"c:\utils\testdata\test.txt");
 
-            //string line;
-            //while ((line = file.ReadLine()) != null)
-            //{
-            //    Row thisRow = new Row(line);
-
-            //}
             Field field = new Field(file);
             
             file.Close();

@@ -48,34 +48,24 @@ namespace NumberThing
 
     class Field
     {
-        public int[][] field;
         public Cell[][] Cells;
 
         public Field(StreamReader file)
         {
             Cells = new Cell[NTConstants.FieldSize][];
-            field = new int[NTConstants.FieldSize][];
             string line;
             int x = 0; 
             while ((line = file.ReadLine()) != null)
             {
-                int[] row = line.Split(',').Select(n =>
-                    (!String.IsNullOrEmpty(n) ? int.Parse(n) : 0)).ToArray();
                 Cell[] cellRow = line.Split(',').Select(n =>
                     new Cell(n)).ToArray();
-                if (row.Count() < NTConstants.FieldSize)
+                if (cellRow.Count() < NTConstants.FieldSize)
                 {
-                    int i = row.Count();
-                    Array.Resize(ref row, NTConstants.FieldSize);
-                    while (i < NTConstants.FieldSize)
-                        row[i++] = 0;
-
-                    i = cellRow.Count();
+                    int i = cellRow.Count();
                     Array.Resize(ref cellRow, NTConstants.FieldSize);
                     while (i < NTConstants.FieldSize)
                         cellRow[i++] = new Cell();
                 }
-                field[x] = row;
                 Cells[x] = cellRow;
                 x++;
 
@@ -85,19 +75,10 @@ namespace NumberThing
             x = origCount;
             while (x < NTConstants.FieldSize)
             {
-                field[x++] = new int[NTConstants.FieldSize];
-            }
-
-            x = origCount;
-            while (x < NTConstants.FieldSize)
-            {
                 
                 Cell[] cellRow = new Cell[NTConstants.FieldSize];
-                // Array.ForEach(cellRow, cell => cell = new Cell());
-                for (int i = 0; i < NTConstants.FieldSize; i++)
-                {
-                    cellRow[i] = new Cell();
-                }
+                int i = 0;
+                Array.ForEach(cellRow, cell => cellRow[i++] = new Cell());
                 Cells[x++] = cellRow;
             }
         }
