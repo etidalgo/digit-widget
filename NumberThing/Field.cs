@@ -81,11 +81,8 @@ namespace NumberThing
             {
                 
                 Cell[] cellRow = new Cell[NTConstants.FieldSize];
-                // Array.ForEach(cellRow, cell => cell = new Cell());
-                for (int i = 0; i < NTConstants.FieldSize; i++)
-                {
-                    cellRow[i] = new Cell();
-                }
+                int i = 0;
+                Array.ForEach(cellRow, cell => cellRow[i++] = new Cell());
                 Cells[x++] = cellRow;
             }
         }
