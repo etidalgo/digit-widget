@@ -49,26 +49,7 @@ namespace NumberThing
             file.Close();
 
             // print
-            int row = 0;
-            Array.ForEach(field.Cells, cellRow =>
-            {
-                row++;
-                int col = 0;
-                Array.ForEach(cellRow, cell =>
-                {
-                    col++;
-                    Console.Write(" {0} ", cell.ToString());
-                    if (col % NTConstants.BoxSize == 0 && col < NTConstants.FieldSize )
-                    {
-                        Console.Write("|", cell.ToString());
-                    }
-                });
-                Console.WriteLine("");
-                if (row % NTConstants.BoxSize == 0 && row < NTConstants.FieldSize)
-                {
-                    Console.WriteLine("---------+---------+---------");
-                }
-            });
+            Console.WriteLine("{0}", field.PrintToString());
         }
     }
 }

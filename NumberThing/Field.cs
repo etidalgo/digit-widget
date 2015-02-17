@@ -89,5 +89,31 @@ namespace NumberThing
                 Cells[x++] = cellRow;
             }
         }
+
+        public string PrintToString()
+        {
+            StringBuilder sb = new StringBuilder();
+            int row = 0;
+            Array.ForEach(Cells, cellRow =>
+            {
+                row++;
+                int col = 0;
+                Array.ForEach(cellRow, cell =>
+                {
+                    col++;
+                    sb.AppendFormat(" {0} ", cell.ToString());
+                    if (col % NTConstants.BoxSize == 0 && col < NTConstants.FieldSize)
+                    {
+                        sb.AppendFormat(":", cell.ToString());
+                    }
+                });
+                sb.Append(Environment.NewLine);
+                if (row % NTConstants.BoxSize == 0 && row < NTConstants.FieldSize)
+                {
+                    sb.AppendFormat(" -  -  - : -  -  - : -  -  - " + Environment.NewLine);
+                }
+            });
+            return sb.ToString();
+        }
     }
 }
