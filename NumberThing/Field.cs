@@ -44,7 +44,7 @@ namespace NumberThing
             Cells = new Cell[NTConstants.FieldSize][];
             field = new int[NTConstants.FieldSize][];
             string line;
-            int x = 0;
+            int x = 0; 
             while ((line = file.ReadLine()) != null)
             {
                 int[] row = line.Split(',').Select(n =>
@@ -63,15 +63,21 @@ namespace NumberThing
                     while (i < NTConstants.FieldSize)
                         cellRow[i++] = new Cell("");
                 }
-                field[x++] = row;
-                Cells[x++] = cellRow;
+                field[x] = row;
+                Cells[x] = cellRow;
+                x++;
 
             }
-            while (field.Count() < NTConstants.FieldSize)
+
+            int origCount = x;
+            x = origCount;
+            while (x < NTConstants.FieldSize)
             {
                 field[x++] = new int[NTConstants.FieldSize];
             }
-            while (Cells.Count() < NTConstants.FieldSize)
+
+            x = origCount;
+            while (x < NTConstants.FieldSize)
             {
                 Cells[x++] = new Cell[NTConstants.FieldSize];
             }
