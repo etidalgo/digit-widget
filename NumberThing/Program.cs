@@ -60,13 +60,13 @@ namespace NumberThing
                     Console.Write(" {0} ", cell.ToString());
                     if (col % NTConstants.BoxSize == 0 && col < NTConstants.FieldSize )
                     {
-                        Console.Write(" | ", cell.ToString());
+                        Console.Write("|", cell.ToString());
                     }
                 });
                 Console.WriteLine("");
                 if (row % NTConstants.BoxSize == 0 && row < NTConstants.FieldSize)
                 {
-                    Console.WriteLine(" --------------------------------------- ");
+                    Console.WriteLine("---------+---------+---------");
                 }
             });
         }
