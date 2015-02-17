@@ -41,6 +41,7 @@ namespace NumberThing
 
         public Field(StreamReader file)
         {
+            Cells = new Cell[NTConstants.FieldSize][];
             field = new int[NTConstants.FieldSize][];
             string line;
             int x = 0;
