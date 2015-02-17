@@ -11,6 +11,7 @@ namespace NumberThing
         public static int BoxSize = 3;
         public static int FieldSize = 9; 
     }
+
     class Row 
     {
         public List<int> cells = new List<int>();
@@ -48,14 +49,25 @@ namespace NumberThing
             file.Close();
 
             // print
-            Array.ForEach(field.field, row =>
+            int row = 0;
+            Array.ForEach(field.Cells, cellRow =>
             {
-                Array.ForEach(row, cell =>
+                row++;
+                int col = 0;
+                Array.ForEach(cellRow, cell =>
                 {
-                    Console.Write("{0}", cell.ToString());
-
+                    col++;
+                    Console.Write(" {0} ", cell.ToString());
+                    if (col % NTConstants.BoxSize == 0 && col < NTConstants.FieldSize )
+                    {
+                        Console.Write(" | ", cell.ToString());
+                    }
                 });
                 Console.WriteLine("");
+                if (row % NTConstants.BoxSize == 0 && row < NTConstants.FieldSize)
+                {
+                    Console.WriteLine(" --------------------------------------- ");
+                }
             });
         }
     }

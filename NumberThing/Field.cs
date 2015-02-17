@@ -61,7 +61,7 @@ namespace NumberThing
                     i = cellRow.Count();
                     Array.Resize(ref cellRow, NTConstants.FieldSize);
                     while (i < NTConstants.FieldSize)
-                        cellRow[i++] = new Cell("");
+                        cellRow[i++] = new Cell();
                 }
                 field[x] = row;
                 Cells[x] = cellRow;
@@ -79,7 +79,14 @@ namespace NumberThing
             x = origCount;
             while (x < NTConstants.FieldSize)
             {
-                Cells[x++] = new Cell[NTConstants.FieldSize];
+                
+                Cell[] cellRow = new Cell[NTConstants.FieldSize];
+                // Array.ForEach(cellRow, cell => cell = new Cell());
+                for (int i = 0; i < NTConstants.FieldSize; i++)
+                {
+                    cellRow[i] = new Cell();
+                }
+                Cells[x++] = cellRow;
             }
         }
     }
