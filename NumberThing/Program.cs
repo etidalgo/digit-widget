@@ -25,7 +25,12 @@ namespace NumberThing
                 int.Parse(n)).ToArray();
 
             // Read the file and display it line by line.
-            System.IO.StreamReader file = new System.IO.StreamReader(@"c:\utils\testdata\test.txt");
+            string dataFile = @"c:\utils\testdata\test.txt";
+            if (args.Length >= 1)
+            {
+                dataFile = args[0];
+            }
+            System.IO.StreamReader file = new System.IO.StreamReader(dataFile);
 
             Field field = new Field(file);
             
